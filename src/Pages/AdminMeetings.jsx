@@ -179,26 +179,19 @@
 // };  
 
 // export default AdminMeetings;
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import "../pagesCSS/AdminMeeting.css";
-import { sanitizeUrl } from '@braintree/sanitize-url';
 
-
-// ✅ Trusted meeting domains (you can add more if needed)
-const trustedDomains = ["meet.google.com", "zoom.us", "teams.microsoft.com"];
-
-// ✅ Strict safe URL checker with domain allowlisting
-const getSafeMeetingLink = (url) => {
+// Custom sanitization function to prevent XSS
+const sanitizeUrl = (url) => {
   try {
     const parsed = new URL(url);
-    const isHttp = parsed.protocol === "https:" || parsed.protocol === "http:";
-    const isTrusted = trustedDomains.some(domain => parsed.hostname.includes(domain));
-    return isHttp && isTrusted ? parsed.href : null;
+    const protocol = parsed.protocol.toLowerCase();
+    return protocol === "http:" || protocol === "https:" ? url : "about:blank";
   } catch {
-    return null;
+    return "about:blank";
   }
 };
 
@@ -212,14 +205,18 @@ const AdminMeetings = () => {
 
     if (userEmail !== adminEmail) {
       alert("Access Denied! Only Admins can view this page.");
-      navigate("/");
+      navigate("/"); // Redirect to home page
       return;
     }
 
     fetch("https://virtual-backend-4.onrender.com/AdminMeetings")
       .then((res) => res.json())
       .then((data) => {
-        setMeetings(Array.isArray(data) ? data : []);
+        if (Array.isArray(data)) {
+          setMeetings(data);
+        } else {
+          setMeetings([]);
+        }
       })
       .catch((err) => console.error("Error fetching meetings:", err));
   }, [navigate]);
@@ -232,7 +229,6 @@ const AdminMeetings = () => {
       ) : (
         <ul>
           {meetings.map((meeting, index) => {
-            // const safeMeetingLink = getSafeMeetingLink(meeting.meetingLink);
             const safeMeetingLink = sanitizeUrl(meeting.meetingLink);
             return (
               <li key={index}>
@@ -240,8 +236,7 @@ const AdminMeetings = () => {
                 <strong>Start Time:</strong> {meeting.startTime || "⏳ Not Set"} <br />
                 <strong>Booked By:</strong> {meeting.bookedBy || "Unknown"} <br />
 
-                {/* ✅ Only render <a> if link is fully validated */}
-                {safeMeetingLink ? (
+                {safeMeetingLink !== "about:blank" ? (
                   <a
                     href={safeMeetingLink}
                     target="_blank"
