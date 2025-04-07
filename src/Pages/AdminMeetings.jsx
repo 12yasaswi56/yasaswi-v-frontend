@@ -184,6 +184,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import "../pagesCSS/AdminMeeting.css";
+import { sanitizeUrl } from '@braintree/sanitize-url';
+
 
 // ✅ Trusted meeting domains (you can add more if needed)
 const trustedDomains = ["meet.google.com", "zoom.us", "teams.microsoft.com"];
@@ -230,8 +232,8 @@ const AdminMeetings = () => {
       ) : (
         <ul>
           {meetings.map((meeting, index) => {
-            const safeMeetingLink = getSafeMeetingLink(meeting.meetingLink);
-
+            // const safeMeetingLink = getSafeMeetingLink(meeting.meetingLink);
+            const safeMeetingLink = sanitizeUrl(meeting.meetingLink);
             return (
               <li key={index}>
                 <strong>Date:</strong> {meeting.date || "📅 Not Available"} <br />
