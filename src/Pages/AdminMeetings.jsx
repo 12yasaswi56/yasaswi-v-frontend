@@ -185,13 +185,18 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import "../pagesCSS/AdminMeeting.css";
 
-// Utility to check if URL is safe
-const isSafeUrl = (url) => {
+// ✅ Trusted meeting domains (you can add more if needed)
+const trustedDomains = ["meet.google.com", "zoom.us", "teams.microsoft.com"];
+
+// ✅ Strict safe URL checker with domain allowlisting
+const getSafeMeetingLink = (url) => {
   try {
     const parsed = new URL(url);
-    return parsed.protocol === "https:" || parsed.protocol === "http:";
-  } catch (e) {
-    return false;
+    const isHttp = parsed.protocol === "https:" || parsed.protocol === "http:";
+    const isTrusted = trustedDomains.some(domain => parsed.hostname.includes(domain));
+    return isHttp && isTrusted ? parsed.href : null;
+  } catch {
+    return null;
   }
 };
 
@@ -205,18 +210,14 @@ const AdminMeetings = () => {
 
     if (userEmail !== adminEmail) {
       alert("Access Denied! Only Admins can view this page.");
-      navigate("/"); // Redirect to home page
+      navigate("/");
       return;
     }
 
     fetch("https://virtual-backend-4.onrender.com/AdminMeetings")
       .then((res) => res.json())
       .then((data) => {
-        if (Array.isArray(data)) {
-          setMeetings(data);
-        } else {
-          setMeetings([]);
-        }
+        setMeetings(Array.isArray(data) ? data : []);
       })
       .catch((err) => console.error("Error fetching meetings:", err));
   }, [navigate]);
@@ -229,20 +230,18 @@ const AdminMeetings = () => {
       ) : (
         <ul>
           {meetings.map((meeting, index) => {
-            const safeLink = isSafeUrl(meeting.meetingLink)
-              ? meeting.meetingLink
-              : null;
+            const safeMeetingLink = getSafeMeetingLink(meeting.meetingLink);
 
             return (
               <li key={index}>
                 <strong>Date:</strong> {meeting.date || "📅 Not Available"} <br />
-                <strong>Start Time:</strong>{" "}
-                {meeting.startTime || "⏳ Not Set"} <br />
+                <strong>Start Time:</strong> {meeting.startTime || "⏳ Not Set"} <br />
                 <strong>Booked By:</strong> {meeting.bookedBy || "Unknown"} <br />
 
-                {safeLink ? (
+                {/* ✅ Only render <a> if link is fully validated */}
+                {safeMeetingLink ? (
                   <a
-                    href={safeLink}
+                    href={safeMeetingLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -263,6 +262,7 @@ const AdminMeetings = () => {
 };
 
 export default AdminMeetings;
+
 
 
 
