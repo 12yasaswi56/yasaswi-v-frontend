@@ -1,0 +1,117 @@
+.expertise-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.expert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.expert-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.expert-card:hover {
+  transform: translateY(-5px);
+}
+
+.expert-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.expert-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.expert-role {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0 10px;
+}
+
+.know-more-btn {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.know-more-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal */
+.expert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.modal-role {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+.modal-description {
+  font-size: 14px;
+  margin: 15px 0;
+  color: #333;
+}
+
+.close-btn {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.close-btn:hover {
+  background-color: #c82333;
+
+}
