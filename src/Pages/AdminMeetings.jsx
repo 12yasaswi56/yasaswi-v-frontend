@@ -228,26 +228,33 @@ const AdminMeetings = () => {
         <p>No meetings scheduled.</p>
       ) : (
         <ul>
-          {meetings.map((meeting, index) => (
-            <li key={index}>
-              <strong>Date:</strong> {meeting.date || "📅 Not Available"} <br />
-              <strong>Start Time:</strong> {meeting.startTime || "⏳ Not Set"} <br />
-              <strong>Booked By:</strong> {meeting.bookedBy || "Unknown"} <br />
+          {meetings.map((meeting, index) => {
+            const safeLink = isSafeUrl(meeting.meetingLink)
+              ? meeting.meetingLink
+              : null;
 
-              {meeting.meetingLink && isSafeUrl(meeting.meetingLink) ? (
-                <a
-                  href={meeting.meetingLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🔗 Join Meeting
-                </a>
-              ) : (
-                <p style={{ color: "red" }}>❌ Meeting link unavailable</p>
-              )}
-              <hr />
-            </li>
-          ))}
+            return (
+              <li key={index}>
+                <strong>Date:</strong> {meeting.date || "📅 Not Available"} <br />
+                <strong>Start Time:</strong>{" "}
+                {meeting.startTime || "⏳ Not Set"} <br />
+                <strong>Booked By:</strong> {meeting.bookedBy || "Unknown"} <br />
+
+                {safeLink ? (
+                  <a
+                    href={safeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗 Join Meeting
+                  </a>
+                ) : (
+                  <p style={{ color: "red" }}>❌ Meeting link unavailable</p>
+                )}
+                <hr />
+              </li>
+            );
+          })}
         </ul>
       )}
       <Footer />
@@ -256,6 +263,7 @@ const AdminMeetings = () => {
 };
 
 export default AdminMeetings;
+
 
 
 
