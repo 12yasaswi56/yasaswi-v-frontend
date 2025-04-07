@@ -180,11 +180,20 @@
 
 // export default AdminMeetings;
 
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import "../pagesCSS/AdminMeeting.css";
+
+// Utility to check if URL is safe
+const isSafeUrl = (url) => {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  } catch (e) {
+    return false;
+  }
+};
 
 const AdminMeetings = () => {
   const [meetings, setMeetings] = useState([]);
@@ -196,34 +205,21 @@ const AdminMeetings = () => {
 
     if (userEmail !== adminEmail) {
       alert("Access Denied! Only Admins can view this page.");
-      navigate("/"); // Redirect to home page or login page
+      navigate("/"); // Redirect to home page
       return;
     }
 
     fetch("https://virtual-backend-4.onrender.com/AdminMeetings")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Fetched Meetings Data:", data); // Debugging log
-
         if (Array.isArray(data)) {
           setMeetings(data);
         } else {
-          console.error("Expected an array but received:", data);
           setMeetings([]);
         }
       })
       .catch((err) => console.error("Error fetching meetings:", err));
   }, [navigate]);
-
-  // Helper function to validate link
-  const isValidUrl = (url) => {
-    try {
-      const parsedUrl = new URL(url);
-      return parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:";
-    } catch (error) {
-      return false;
-    }
-  };
 
   return (
     <div>
@@ -233,17 +229,21 @@ const AdminMeetings = () => {
       ) : (
         <ul>
           {meetings.map((meeting, index) => (
-            <li key={meeting.meetingLink || index}>
+            <li key={index}>
               <strong>Date:</strong> {meeting.date || "📅 Not Available"} <br />
               <strong>Start Time:</strong> {meeting.startTime || "⏳ Not Set"} <br />
               <strong>Booked By:</strong> {meeting.bookedBy || "Unknown"} <br />
 
-              {meeting.meetingLink && isValidUrl(meeting.meetingLink) ? (
-                <a href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">
+              {meeting.meetingLink && isSafeUrl(meeting.meetingLink) ? (
+                <a
+                  href={meeting.meetingLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   🔗 Join Meeting
                 </a>
               ) : (
-                <p style={{ color: "red" }}>❌ Invalid or unavailable meeting link</p>
+                <p style={{ color: "red" }}>❌ Meeting link unavailable</p>
               )}
               <hr />
             </li>
@@ -256,6 +256,7 @@ const AdminMeetings = () => {
 };
 
 export default AdminMeetings;
+
 
 
 // import React, { useState, useEffect } from "react";
