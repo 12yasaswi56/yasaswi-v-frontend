@@ -96,7 +96,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../pagesCSS/Slots.css";
-import Footer from "../Components/Footer";
+import Footer from "../components/Footer";
 
 const Slots = () => {
   const navigate = useNavigate();
