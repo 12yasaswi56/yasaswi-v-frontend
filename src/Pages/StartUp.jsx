@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../pagesCSS/StartUp.css"; // Import CSS file for styling
-import Footer from "../Components/Footer";
+import Footer from "../components/Footer";
 
 const Startup = () => {
   const [formData, setFormData] = useState({
