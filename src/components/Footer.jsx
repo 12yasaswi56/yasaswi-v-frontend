@@ -20,7 +20,7 @@ const Footer = () => {
           <h3 style={styles.subtitle}>Quick Links</h3>
           <ul style={styles.linkList}>
             <li><a href="/" style={styles.link}>About Us</a></li>
-            <li><a href="/mentorapplication" style={styles.link}>Mentors</a></li>
+            <li><a href="/mentors" style={styles.link}>Mentors</a></li>
             <li><a href="/contact" style={styles.link}>Contact Us</a></li>
           </ul>
         </div>
