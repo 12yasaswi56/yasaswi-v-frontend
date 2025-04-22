@@ -174,7 +174,7 @@ textarea {
 }
 
 /* Mobile devices */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .contact-form-container {
     width: 100%;
     padding: 15px;
@@ -210,5 +210,58 @@ textarea {
   .submit-btn {
     font-size: 14px;
     padding: 10px;
+  }
+} */
+
+@media (max-width: 768px) {
+  .contact-form-container {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .company-intro h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .company-intro p {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .form-row .form-group {
+    width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  textarea {
+    height: 80px;
+  }
+
+  .submit-btn {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .error-message {
+    font-size: 12px;
+    margin-bottom: 8px;
   }
 }
