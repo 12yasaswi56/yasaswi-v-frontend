@@ -38,7 +38,11 @@ const Footer = () => {
       </div>
 
       {/* Copyright Line */}
-      <p style={styles.copyright}>&copy; 2025 Virtual Incubator. All rights reserved.</p>
+      {/* <p style={styles.copyright}>&copy; 2025 Virtual Incubator. All rights reserved.</p> */}
+      <p style={styles.copyright}>
+  &copy; {new Date().getFullYear()} H2Vis Incubator. All rights reserved.
+</p>
+
 
       {/* Social Icons Centered Below Copyright */}
       <div style={styles.socialIconsContainer}>
