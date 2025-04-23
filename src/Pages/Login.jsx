@@ -461,7 +461,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithGoogle, logout } from "../firebase";
 import { Eye, EyeOff } from "lucide-react";
-import "../styles/Login.css";
+import "../pageCSS/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
