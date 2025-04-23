@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Redirect after OTP verification
-import "../pagesCSS/OTPVerification.css"
+import "../pagesCSS/OtpVerification.css"
 const OTPVerification = () => {
     const [otp, setOtp] = useState("");
     const [message, setMessage] = useState("");
