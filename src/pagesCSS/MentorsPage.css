@@ -1,52 +1,88 @@
 .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-x: auto; /* Enables horizontal scroll on small screens */
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  min-width: 600px; /* Prevents table from squishing too much */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+td {
+  background-color: #fff;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.loading, .no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+/* ✅ Responsive for tablets and smaller */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    margin: 10px;
   }
-  
-  h2 {
-    text-align: center;
-    color: "white";
-    margin-bottom: 20px;
-  }
-  
+
   table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    min-width: unset;
+    font-size: 14px;
   }
-  
+
   th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
+    padding: 10px;
+    font-size: 14px;
   }
-  
-  th {
-    background-color: #007bff;
-    color: white;
+}
+
+/* ✅ Responsive for mobile phones */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 20px;
   }
-  
-  td {
-    background-color: #fff;
+
+  th, td {
+    padding: 8px;
+    font-size: 13px;
   }
-  
-  a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+
   .loading, .no-data {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
+    font-size: 16px;
   }
-  
+}
