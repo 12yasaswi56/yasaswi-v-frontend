@@ -23,7 +23,7 @@ const Navbar = () => {
           <img src={logo} alt="H2Vis Logo" style={styles.logo} />
           <h1 style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>
 {/*           E<span style={{ fontSize: '16px', verticalAlign: 'sub' }}>m</span>inenze Growth Labs */}
-            Eminenze Growth Labs
+            Eminenz Growth Labs
         </h1>
         </div>
 
