@@ -118,7 +118,8 @@ const Home = () => {
      <div ref={backgroundRef} className="background-animation"></div>
       <div ref={(el) => (sections.current[0] = el)} className="hero-section reveal-section">
       <h1 className="hero-title">
-  Welcome to H<span style={{ verticalAlign: "sub", fontSize: "smaller" }}>2</span>Vis Incubators
+{/*   Welcome to H<span style={{ verticalAlign: "sub", fontSize: "smaller" }}>2</span>Vis Incubators */}
+        Welcome to Eminenz Growth Labs
 </h1>
 
         <p className="hero-subtitle">Nurturing Ideas into Reality</p>
