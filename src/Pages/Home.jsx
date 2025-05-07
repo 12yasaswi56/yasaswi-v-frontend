@@ -134,7 +134,8 @@ const Home = () => {
       <div ref={(el) => (sections.current[1] = el)} className="about-section reveal-section">
       <button className="about-btn">About Us</button>
       <p className="section-description">
-          At <strong>H<sub>2</sub>Vis Incubators</strong>, we are committed to transforming innovative ideas into thriving startups 
+{/*           At <strong>H<sub>2</sub>Vis Incubators</strong>, we are committed to transforming innovative ideas into thriving startups  */}
+        At Eminenz Growth Labs ,we are committed to transforming innovative ideas into thriving startups
           by providing founders with expert mentorship, essential resources, and access to industry networks.<br /><br />
   
           Our collaborative ecosystem brings together entrepreneurs, seasoned mentors, and industry leaders 
