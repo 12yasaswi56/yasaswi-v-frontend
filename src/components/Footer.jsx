@@ -9,7 +9,7 @@ const Footer = () => {
         
         {/* Left Section - Company Info */}
         <div style={styles.section}>
-          <h2 style={styles.title}>H2Vis Incubator</h2>
+          <h2 style={styles.title}>Eminenz Growth Labs</h2>
           <p style={styles.description}>
             Empowering startups with mentorship, resources, and networking to
             accelerate growth and innovation.
@@ -40,7 +40,7 @@ const Footer = () => {
       {/* Copyright Line */}
       {/* <p style={styles.copyright}>&copy; 2025 Virtual Incubator. All rights reserved.</p> */}
       <p style={styles.copyright}>
-  &copy; {new Date().getFullYear()} H2Vis Incubator. All rights reserved.
+  &copy; {new Date().getFullYear()} Eminenz Growth Labs. All rights reserved.
 </p>
 
 
