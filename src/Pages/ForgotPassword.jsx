@@ -82,7 +82,7 @@ const styles = {
     marginBottom: "15px",
   },
   input: {
-    width: "100%",
+    width: "90%",
     padding: "12px",
     marginBottom: "12px",
     border: "1px solid #ff6a3d",
