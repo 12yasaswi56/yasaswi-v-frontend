@@ -75,7 +75,7 @@ const styles = {
   title: {
     fontSize: "28px",
     fontWeight: "bold",
-    color:black,
+    color:"black",
   },
   subText: {
     fontSize: "14px",
