@@ -63,7 +63,7 @@ const ForgotPassword = () => {
 
 const styles = {
   container: {
-    width: "400px",
+    width: "300px",
     margin: "50px auto",
     padding: "30px",
     borderRadius: "10px",
