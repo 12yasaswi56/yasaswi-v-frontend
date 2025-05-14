@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../pageCSS/MentorApplication.css";
+import "../pagesCSS/MentorApplication.css";
 const MentorApplication = () => {
   const [formData, setFormData] = useState({
     name: "",
